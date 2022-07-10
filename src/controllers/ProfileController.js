@@ -38,3 +38,16 @@ exports.UserLogin = (request, response) => {
     });
 
 }
+
+exports.SelectProfile = (request, response) => {
+    let UserName = "";
+    ProfileModel.find({UserName:UserName}, (error, data) => {
+        if(error) {
+            response.status(400).json({status: "fail", data:error});
+        }
+        else{
+            response.status(200).json({status: "success", data:data});
+        }
+    });
+
+}
