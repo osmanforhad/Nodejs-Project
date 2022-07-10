@@ -40,7 +40,7 @@ exports.UserLogin = (request, response) => {
 }
 
 exports.SelectProfile = (request, response) => {
-    let UserName = "";
+    let UserName = request.headers['username'];
     ProfileModel.find({UserName:UserName}, (error, data) => {
         if(error) {
             response.status(400).json({status: "fail", data:error});
