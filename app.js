@@ -34,7 +34,7 @@ app.use(limiter);
 
 //Mongo DB Database Connection
 let URI = "mongodb+srv://osman:osman@cluster0.griei.mongodb.net/Todo";
-let OPTION = {user: '', pass: ''}
+let OPTION = {user: '', pass: '', autoIndex:true}
 mongoose.connect(URI, OPTION, (error) => {
     console.log("Database connection success");
     console.log(error);
