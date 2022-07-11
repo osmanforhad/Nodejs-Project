@@ -113,3 +113,18 @@ exports.UpdateToDoStatus = (request, response) => {
     });
 
 }
+
+exports.SelectToDoByDate = (request, response) => {
+    let UserName = request.headers['username'];
+    let FormDate = request.body['FormDate'];
+    let ToDate = request.body['ToDate'];
+    ToDoListModel.find({UserName:UserName, ToDoCreateDate:{$gte:new Date(FormDate), $lte:new Date(ToDate)}}, (error, data) => {
+        if(error) {
+            response.status(400).json({status: "fail", data:error});
+        }
+        else{
+            response.status(200).json({status: "success", data:data});
+        }
+    });
+
+}
