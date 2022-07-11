@@ -16,6 +16,8 @@ router.get("/SelectToDo", AuthVerifyMiddleware, ToDoListController.SelectToDo);
 router.post("/UpdateToDo", AuthVerifyMiddleware, ToDoListController.UpdateToDo);
 router.post("/UpdateToDoStatus", AuthVerifyMiddleware, ToDoListController.UpdateToDoStatus);
 router.post("/RemoveToDo", AuthVerifyMiddleware, ToDoListController.RemoveToDo);
+router.get("/SelectToDoByStatus", AuthVerifyMiddleware, ToDoListController.SelectToDoByStatus);
+
 
 
 

@@ -99,3 +99,17 @@ exports.UpdateToDoStatus = (request, response) => {
     });
  
  }
+
+ exports.SelectToDoByStatus = (request, response) => {
+    let UserName = request.headers['username'];
+    let ToDoStatus = request.body['ToDoStatus'];
+    ToDoListModel.find({UserName:UserName, ToDoStatus:ToDoStatus}, (error, data) => {
+        if(error) {
+            response.status(400).json({status: "fail", data:error});
+        }
+        else{
+            response.status(200).json({status: "success", data:data});
+        }
+    });
+
+}
