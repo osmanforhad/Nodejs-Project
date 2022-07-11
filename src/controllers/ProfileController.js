@@ -51,3 +51,17 @@ exports.SelectProfile = (request, response) => {
     });
 
 }
+
+exports.UpdateProfile = (request, response) => {
+    let UserName = request.headers['username'];
+    let reqBody = request.body;
+    ProfileModel.updateOne({UserName:UserName}, {$set:reqBody}, {upsert:true}, (error, data) => {
+        if(error) {
+            response.status(400).json({status: "fail", data:error});
+        }
+        else{
+            response.status(200).json({status: "success", data:data});
+        }
+    });
+
+}
