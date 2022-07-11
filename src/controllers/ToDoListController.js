@@ -28,3 +28,16 @@ exports.CreateToDo = (request, response) => {
         }
     });
 }
+
+exports.SelectToDo = (request, response) => {
+    let UserName = request.headers['username'];
+    ToDoListModel.find({UserName:UserName}, (error, data) => {
+        if(error) {
+            response.status(400).json({status: "fail", data:error});
+        }
+        else{
+            response.status(200).json({status: "success", data:data});
+        }
+    });
+
+}
